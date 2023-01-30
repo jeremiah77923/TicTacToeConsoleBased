@@ -58,6 +58,12 @@ build CMakeFiles/TicTacToeConsoleBased.dir/Board.cpp.o: CXX_COMPILER__TicTacToeC
   OBJECT_DIR = CMakeFiles/TicTacToeConsoleBased.dir
   OBJECT_FILE_DIR = CMakeFiles/TicTacToeConsoleBased.dir
 
+build CMakeFiles/TicTacToeConsoleBased.dir/BoardOperations.cpp.o: CXX_COMPILER__TicTacToeConsoleBased_Debug /Users/jeremiahhawthorne/CLionProjects/TicTacToeConsoleBased/BoardOperations.cpp || cmake_object_order_depends_target_TicTacToeConsoleBased
+  DEP_FILE = CMakeFiles/TicTacToeConsoleBased.dir/BoardOperations.cpp.o.d
+  FLAGS = -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk -fcolor-diagnostics -std=gnu++17
+  OBJECT_DIR = CMakeFiles/TicTacToeConsoleBased.dir
+  OBJECT_FILE_DIR = CMakeFiles/TicTacToeConsoleBased.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target TicTacToeConsoleBased
@@ -66,7 +72,7 @@ build CMakeFiles/TicTacToeConsoleBased.dir/Board.cpp.o: CXX_COMPILER__TicTacToeC
 #############################################
 # Link the executable TicTacToeConsoleBased
 
-build TicTacToeConsoleBased: CXX_EXECUTABLE_LINKER__TicTacToeConsoleBased_Debug CMakeFiles/TicTacToeConsoleBased.dir/main.cpp.o CMakeFiles/TicTacToeConsoleBased.dir/Board.cpp.o
+build TicTacToeConsoleBased: CXX_EXECUTABLE_LINKER__TicTacToeConsoleBased_Debug CMakeFiles/TicTacToeConsoleBased.dir/main.cpp.o CMakeFiles/TicTacToeConsoleBased.dir/Board.cpp.o CMakeFiles/TicTacToeConsoleBased.dir/BoardOperations.cpp.o
   FLAGS = -g -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk
   OBJECT_DIR = CMakeFiles/TicTacToeConsoleBased.dir
   POST_BUILD = :

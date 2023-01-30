@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <cstdlib>
+#include <random>
 using namespace std;
 
 #ifndef TICTACTOECONSOLEBASED_BOARD_H
@@ -47,6 +49,41 @@ public:
             cout << endl;
         }
         cout << "-------------------";
+    }
+
+    void updateBoard(int row, int col, string letter) {
+        for(int x = 0;x<inputs.size();x++) {
+            if(x==row) {
+                for (int y = 0; y < inputs.at(x).size(); y++) {
+                    if (y==col) {
+                        inputs[x][y] = letter;
+                    }
+                }
+            }
+        }
+    }
+    int computerTurn() {
+        srand(3);
+        int x = 1 - rand() % 3;
+        int y = 1 - rand() % 3;
+
+    }
+    bool checkIfWon() {
+        int cols = inputs.size();
+        for(int x = 0;x<inputs.size();x++) {
+            /*
+             * (0,0) (0,1) (3,0)
+             * (1,0) (1,1)
+             * (2,0) (2,1)
+             */
+            if(inputs.at(x).at(0)=="X"||inputs.at(x).at(1)=="X"||inputs.at(2)=="X") {
+                cout << "X has won congratulations!";
+            }
+            if(inputs.at(x).at(0)=="O"||inputs.at(x).at(1)=="O"||inputs.at(2)=="O") {
+                cout << "X has won congratulations!";
+            }
+            if(inputs.at(0).at(x)=="O"||inputs
+        }
     }
 };
 

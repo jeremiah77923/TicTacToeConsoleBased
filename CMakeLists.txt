@@ -3,4 +3,4 @@ project(TicTacToeConsoleBased)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(TicTacToeConsoleBased main.cpp Board.cpp Board.h)
+add_executable(TicTacToeConsoleBased main.cpp Board.cpp Board.h BoardOperations.cpp BoardOperations.h)
