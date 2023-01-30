@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include "Board.h"
 using namespace std;
 /*
  *
@@ -60,11 +62,34 @@ string takeInputs() {
     cin >> colsNumber;
     cout << "Do you want to be X or O?";
     cin >> letterChoice;
-    return rowsNumber + colsNumber + letterChoice;
+    return rowsNumber + "," + colsNumber + "," + letterChoice;
+}
+vector<string> splitString(string inputStrings) {
+    vector<string> inputVals;
+    string tempString;
+    for(int x=0;x<inputStrings.length();x++) {
+        if(inputStrings[x]!=','||x==inputStrings.length()-1) {
+            tempString+=inputStrings[x];
+        }
+        if(inputStrings[x]==',') {
+            inputVals.push_back(tempString);
+            tempString = "";
+        }
+        if(x==inputStrings.length()-1) {
+            inputVals.push_back(tempString);
+        }
+            }
+
+    return inputVals;
 }
 
 int main() {
     std::cout << "Hello, World!" << std::endl;
-    takeInputs()
+    vector<string> inputs = splitString(takeInputs());
+    Board boardObj(inputs);
+    boardObj.print_Board();
+
+
+
     return 0;
 }
