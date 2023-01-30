@@ -87,8 +87,14 @@ int main() {
     std::cout << "Hello, World!" << std::endl;
     vector<string> inputs = splitString(takeInputs());
     Board boardObj(inputs);
-    boardObj.print_Board();
+    int count = 0;
+    while(count < boardObj.col) {
+        boardObj.print_Board();
 
+        boardObj.playerTurn();
+        boardObj.print_Board();
+        count++;
+    }
 
 
     return 0;

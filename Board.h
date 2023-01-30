@@ -16,6 +16,7 @@ using namespace std;
 class Board {
 public:
     vector<vector<string>> inputs;
+    int col;
 private:
     vector<string> oneD_vector;
 public:
@@ -24,23 +25,21 @@ public:
         string cols = inputs1.at(1);
 
         int row = stoi(rows);
-        int col = stoi(cols);
-        inputs.resize(row * col);
-        cout << inputs.size();
+        col = stoi(cols);
+        inputs.resize(row);
         for(int i=0;i<row*col;i++) {
             oneD_vector.push_back("-");
             cout << oneD_vector.at(i);
         }
+        for(int i = 0;i<inputs.size();i++) {
+            vector<string> temp;
+            for(int x = 0;x<col;x++) {
+                inputs.at(i).push_back("-");
+            }
+        }
     }
     void print_Board() {
-        int cols = sqrt(inputs.size());
-        for(int i = 0;i<inputs.size()/3;i++) {
-            vector<string> temp;
-            for(int x = 0;x<cols;x++) {
-                    inputs.at(i).push_back("-");
-            }
 
-        }
         cout << "-------------------" << endl;
         for(int x = 0;x<inputs.size();x++) {
             for(int y=0;y<inputs.at(x).size();y++) {
@@ -68,6 +67,14 @@ public:
         int y = 1 - rand() % 3;
 
     }
+    void playerTurn() {
+        int row, col;
+        cout << "Please enter the row of where you want to go";
+        cin >> row;
+        cout << "Please enter the col of where you want to go";
+        cin >> col;
+        inputs[row][col] = "X";
+    }
     bool checkIfWon() {
         int cols = inputs.size();
         for(int x = 0;x<inputs.size();x++) {
@@ -76,13 +83,18 @@ public:
              * (1,0) (1,1)
              * (2,0) (2,1)
              */
-            if(inputs.at(x).at(0)=="X"||inputs.at(x).at(1)=="X"||inputs.at(2)=="X") {
+            if(inputs.at(x).at(0)=="X"||inputs.at(x).at(1)=="X"||inputs.at(x).at(2)=="X") {
                 cout << "X has won congratulations!";
             }
-            if(inputs.at(x).at(0)=="O"||inputs.at(x).at(1)=="O"||inputs.at(2)=="O") {
+            if(inputs.at(x).at(0)=="O"||inputs.at(x).at(1)=="O"||inputs.at(2).at(x)=="O") {
                 cout << "X has won congratulations!";
             }
-            if(inputs.at(0).at(x)=="O"||inputs
+            if(inputs.at(0).at(x)=="O"||inputs.at(1).at(x)=="O"||inputs.at(0).at(x)=="O") {
+                cout << "O has won congratulations!";
+            }
+            if(inputs.at(0).at(x)=="X"||inputs.at(1).at(x)=="X"||inputs.at(0).at(x)=="X") {
+                cout << "O has won congratulations!";
+            }
         }
     }
 };
