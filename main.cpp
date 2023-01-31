@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+//#include </Users/jeremiahhawthorne/CLionProjects/TicTacToeConsoleBased/fltk-1.3.8/FL/Fl.H>
+//#include </Users/jeremiahhawthorne/CLionProjects/TicTacToeConsoleBased/fltk-1.3.8/FL/Fl_Window.H>
+//#include </Users/jeremiahhawthorne/CLionProjects/TicTacToeConsoleBased/fltk-1.3.8/FL/Fl_Box.H>
 #include "Board.h"
 using namespace std;
 /*
@@ -84,16 +87,19 @@ vector<string> splitString(string inputStrings) {
 }
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
     vector<string> inputs = splitString(takeInputs());
     Board boardObj(inputs);
     int count = 0;
-    while(count < boardObj.col) {
-        boardObj.print_Board();
+    boardObj.print_Board();
+    while(true) {
 
+        if(boardObj.checkIfWon()>0) {
+            break;
+        }
         boardObj.playerTurn();
         boardObj.print_Board();
-        count++;
+        boardObj.computerTurn();
+        boardObj.print_Board();
     }
 
 
