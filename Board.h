@@ -46,14 +46,14 @@ public:
 
     void print_Board() {
 
-        cout << "-------------------" << endl;
+        cout << "------------" << endl;
         for (int x = 0; x < inputs.size(); x++) {
             for (int y = 0; y < inputs.at(x).size(); y++) {
                 cout << "|" << inputs.at(x).at(y) << "|" << "  ";
             }
             cout << endl;
         }
-        cout << "-------------------" << endl;
+        cout << "------------" << endl;
     }
 
     void updateBoard(int row, int col, string letter) {
@@ -70,11 +70,14 @@ public:
     }
 
     int computerTurn() {
-        int x = 1 + (rand() % 2);
-        int y = 1 - rand() % 2;
+        int x =  (rand() % 3);
+        int y = ( rand() % 3);
+
+
         while (inputs.at(x).at(y) != "-") {
-            int x = 1 + (rand() % 2);
-            int y = 1 - rand() % 2;
+            x =  (rand() % 3);
+            y =  (rand() % 3);
+
         }
         inputs[x][y] = "O";
     }
@@ -95,39 +98,48 @@ public:
         inputs[row][col] = "X";
     }
 
-    bool checkIfWon() {
+    bool  checkIfWon() {
         int cols = inputs.size();
         /*
          * 0,0 0,1 0,2
          * 1,0 1,1 1,2
-         *
          * 2,0 2,1 2,2
+         *
          */
-        cout << inputs.size();
 
         for (int x = 0; x < inputs.size(); x++) {
-            for (int y = 0; y < inputs.size()-2; y++) {
+            for (int y = 0; y < inputs.at(x).size() - 2; y++) {
+                if (inputs.at(y).at(y) == "O" && inputs.at(y + 1).at(y + 1) == "O" &&
+                    inputs.at(y + 2).at(y + 2) == "O") {
+                    cout << "X" << " has won diagonally congratulations!";
+                    return true;
+                }
+                if (inputs.at(y).at(y) == "X" && inputs.at(y + 1).at(y + 1) == "X" &&
+                    inputs.at(y + 2).at(y + 2) == "X") {
+                    cout << "X" << " has won diagonally congratulations!";
+                    return true;
+                }
+                if (inputs.at(x).at(y) == "O" && inputs.at(x).at(y + 1) == "O" && inputs.at(x).at(y + 2) == "O") {
+                    cout << "O" << " has won horizationally congratulations!";
+                    return true;
+                }
+                if (inputs.at(x).at(y) == "X" && inputs.at(x).at(y + 1) == "X" && inputs.at(x).at(y + 2) == "X") {
+                    cout << "X" << " has won horizationally congratulations!";
+                    return true;
+                }
+                if (inputs.at(y).at(x) == "O" && inputs.at(y + 1).at(x) == "O" && inputs.at(y + 2).at(x) == "O") {
+                    cout << "O" << " has won vertically congratulations!";
+                    return true;
+                }
+                if (inputs.at(y).at(x) == "X" && inputs.at(y + 1).at(x) == "X" && inputs.at(y + 2).at(x) == "X") {
+                    cout << "X" << " has won vertically congratulations!";
+                    return true;
+                }
 
-                if (inputs.at(x).at(y) == "O" && inputs.at(x).at(y+1) == "O" && inputs.at(x ).at(y+2) == "O") {
-                    cout << playerChoice << " has won horizationally congratulations!";
-                    return true;
-                }
-                if (inputs.at(x).at(y) == "X" && inputs.at(x).at(y+1) == "X" && inputs.at(x ).at(y+2) == "X") {
-                    cout << playerChoice << " has won horizationally congratulations!";
-                    return true;
-                }
-                if (inputs.at(y).at(x) == "O" && inputs.at(y+1).at(x) == "O" && inputs.at(y+2).at(x) == "O") {
-                    cout << playerChoice << " has won vertically congratulations!";
-                    return true;
-                }
-                if (inputs.at(y).at(x) == "X" && inputs.at(y+1).at(x) == "X" && inputs.at(y+2 ).at(x) == "X") {
-                    cout << playerChoice << " has won vertically congratulations!";
-                    return true;
-                }
 
             }
+            return false;
         }
-        return false;
     }
 };
 
