@@ -15,27 +15,38 @@ using namespace std;
 
 
 class Board {
+private:
+    bool twoPlayers;
+    bool Computer;
+    int playerNum = 0;
+    string player1;
+    string player2;
 public:
     vector<vector<string>> inputs;
     int col;
-private:
-    vector<string> oneD_vector;
 protected:
     string playerChoice;
 public:
     Board(vector<string> inputs1) {
+        if(inputs1.size()>=4) {
+            twoPlayers = true;
+            Computer = false;
+        }
+        else if(inputs1.size()==3){
+            Computer = true;
+            twoPlayers = false;
+        }
 
         srand(time(0));
         string rows = inputs1.at(0);
         string cols = inputs1.at(1);
-        playerChoice = inputs1.at(2);
+        player1 = inputs1.at(2);
+        if(inputs1.size()!=3)
+            player2 = inputs1.at(3);
         int row = stoi(rows);
         col = stoi(cols);
         inputs.resize(row);
-        for (int i = 0; i < row * col; i++) {
-            oneD_vector.push_back("-");
-            cout << oneD_vector.at(i);
-        }
+
         for (int i = 0; i < inputs.size(); i++) {
             vector<string> temp;
             for (int x = 0; x < col; x++) {
@@ -81,7 +92,6 @@ public:
         }
         inputs[x][y] = "O";
     }
-
     void playerTurn() {
         int row, col;
         cout << "Please enter the row of where you want to go";
@@ -95,18 +105,24 @@ public:
             cout << "Please enter the col of where you want to go";
             cin >> col;
         }
-        inputs[row][col] = "X";
+        cout << twoPlayers;
+        switch(Computer) {
+            case false:
+            if (playerNum == 0) {
+                inputs[row][col] = "X";
+                playerNum = 1;
+            } else {
+                inputs[row][col] = "O";
+                playerNum = 0;
+            }
+            break;
+            case true:
+                inputs[row][col] = "X";
+
+        }
     }
 
     bool  checkIfWon() {
-        int cols = inputs.size();
-        /*
-         * 0,0 0,1 0,2
-         * 1,0 1,1 1,2
-         * 2,0 2,1 2,2
-         *
-         */
-
         for (int x = 0; x < inputs.size(); x++) {
             for (int y = 0; y < inputs.at(x).size() - 2; y++) {
                 if (inputs.at(y).at(y) == "O" && inputs.at(y + 1).at(y + 1) == "O" &&
