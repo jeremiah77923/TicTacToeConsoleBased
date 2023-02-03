@@ -109,22 +109,26 @@ int main() {
     vector<string> inputs = splitString(takeInputs());
     Board boardObj(inputs);
     boardObj.print_Board();
-    while(boardObj.checkIfWon()==false) {
-        if(boardObj.checkIfWon()==false) {
+    while(true) {
+
             if(Computer) {
                 boardObj.playerTurn();
                 boardObj.print_Board();
+                if(boardObj.checkIfWon())
+                    break;
                 boardObj.computerTurn();
                 boardObj.print_Board();
             }
             else if(twoPlayers) {
                 boardObj.playerTurn();
                 boardObj.print_Board();
+                if(boardObj.checkIfWon())
+                    break;
                 boardObj.playerTurn();
                 boardObj.print_Board();
 
             }
-        }
+
     }
 
 

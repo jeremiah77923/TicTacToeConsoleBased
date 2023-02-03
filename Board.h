@@ -127,7 +127,7 @@ public:
             for (int y = 0; y < inputs.at(x).size() - 2; y++) {
                 if (inputs.at(y).at(y) == "O" && inputs.at(y + 1).at(y + 1) == "O" &&
                     inputs.at(y + 2).at(y + 2) == "O") {
-                    cout << "X" << " has won diagonally congratulations!";
+                    cout << "O" << " has won diagonally congratulations!";
                     return true;
                 }
                 if (inputs.at(y).at(y) == "X" && inputs.at(y + 1).at(y + 1) == "X" &&
@@ -154,8 +154,9 @@ public:
 
 
             }
-            return false;
+
         }
+        return false;
     }
 };
 
