@@ -120,6 +120,8 @@ int main() {
                 boardObj.print_Board();
             }
             else if(twoPlayers) {
+
+
                 boardObj.playerTurn();
                 boardObj.print_Board();
                 if(boardObj.checkIfWon())

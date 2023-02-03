@@ -105,19 +105,18 @@ public:
             cout << "Please enter the col of where you want to go";
             cin >> col;
         }
-        cout << twoPlayers;
         switch(Computer) {
             case false:
-            if (playerNum == 0) {
-                inputs[row][col] = "X";
-                playerNum = 1;
-            } else {
-                inputs[row][col] = "O";
-                playerNum = 0;
-            }
-            break;
-            case true:
-                inputs[row][col] = "X";
+                if (playerNum == 0) {
+                    inputs[row][col] = "X";
+                    playerNum = 1;
+                } else {
+                    inputs[row][col] = "O";
+                    playerNum = 0;
+                }
+                break;
+                case true:
+                    inputs[row][col] = "X";
 
         }
     }
@@ -136,11 +135,11 @@ public:
                     return true;
                 }
                 if (inputs.at(x).at(y) == "O" && inputs.at(x).at(y + 1) == "O" && inputs.at(x).at(y + 2) == "O") {
-                    cout << "O" << " has won horizationally congratulations!";
+                    cout << "O" << " has won horizontally congratulations!";
                     return true;
                 }
                 if (inputs.at(x).at(y) == "X" && inputs.at(x).at(y + 1) == "X" && inputs.at(x).at(y + 2) == "X") {
-                    cout << "X" << " has won horizationally congratulations!";
+                    cout << "X" << " has won horizontally congratulations!";
                     return true;
                 }
                 if (inputs.at(y).at(x) == "O" && inputs.at(y + 1).at(x) == "O" && inputs.at(y + 2).at(x) == "O") {
